@@ -1,0 +1,35 @@
+{
+  "name": "chat-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd client && npm install && npm run build",
+    "quick-build": "cd client && npm run build",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^1.9.3",
+    "@chatscope/chat-ui-kit-styles": "^1.2.3",
+    "@react-icons/all-files": "^4.1.0",
+    "aws-sdk": "^2.1150.0",
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "cros": "^1.0.1",
+    "dotenv": "^16.0.1",
+    "ethers": "^5.6.9",
+    "express": "^4.18.1",
+    "react-icons": "^4.4.0",
+    "socket.io": "^4.5.1",
+    "timeago": "^1.6.7",
+    "timeago.js": "^4.0.2",
+    "web3": "^1.7.3"
+  },
+  "devDependencies": {
+    "sass": "^1.52.2"
+  }
+}
