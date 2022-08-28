@@ -1,26 +1,18 @@
-import React from "react";
-import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import { FaPaperPlane } from "react-icons/fa";
-import { BiRadioCircle, BiSend } from "react-icons/bi";
-import { RiSendPlane2Fill } from "react-icons/ri";
-import { AiOutlineClose } from "react-icons/ai";
 import {
-  Avatar,
-  ConversationHeader,
-  InfoButton,
-  Message,
-  MessageInput,
-  MessageList,
+  Avatar, Message, MessageList
 } from "@chatscope/chat-ui-kit-react";
-import "./MessagesPanel.scss";
+import React from "react";
+import { AiOutlineClose } from "react-icons/ai";
+import { BiRadioCircle } from "react-icons/bi";
+import { RiSendPlane2Fill } from "react-icons/ri";
 import { format } from "timeago.js";
+import "./MessagesPanel.scss";
 
 export class MessagesPanel extends React.Component {
   state = { input_value: "" };
   send = () => {
     if (this.state.input_value && this.state.input_value != "") {
       this.props.onSendMessage(
-        this.props.channel.userAddress,
         this.state.input_value
       );
       this.setState({ input_value: "" });

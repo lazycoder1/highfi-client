@@ -1,24 +1,31 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
-const SERVER = "http://localhost:3000";
+import React, { useEffect } from "react";
+import "./App.scss";
+import ConnectingWallet from "./components/chat/ConnectingWallet";
+import ConversationTopics from "./components/chat/ConversationTopics";
+import Layout from "./components/chat/Layout/Layout";
+import MessageList from "./components/chat/MessageList";
+import { useAuth } from "./contexts/AuthContext";
 
 function App() {
-  const [data, setData] = React.useState(null);
+  // on this way you can access to global state from every component
+  const { state, currentTab, setCurrentTab } = useAuth();
 
-  React.useEffect(() => {
-    fetch(SERVER + "/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
+  useEffect(() => {
+    if (!state.accessToken) {
+      setCurrentTab(1);
+    }
+  }, [currentTab]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
-    </div>
+    <>
+      <Layout setCurrentTab={setCurrentTab}>
+        {currentTab === 1 && (
+          <ConversationTopics setCurrentTab={setCurrentTab} />
+        )}
+        {currentTab === 2 && <ConnectingWallet setCurrentTab={setCurrentTab} />}
+        {currentTab === 3 && <MessageList />}
+      </Layout>
+    </>
   );
 }
 
