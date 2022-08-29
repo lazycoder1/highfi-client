@@ -1,9 +1,8 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import socketClient from "socket.io-client";
 
-// const SERVER = "https://dashboard.highfi.me";
-const SERVER = "http://localhost:3000"
-
+const SERVER = "https://dashboard.highfi.me";
+//const SERVER = "http://localhost:3001"
 const AuthContext = createContext(null);
 
 // SO HERE WE DO LOGIC FOR AUTHENTICATION
@@ -101,15 +100,15 @@ export const AuthProvider = ({ children }) => {
     } ) */
   };
 
-  const handleSendMessage = (address, text) => {
+  const handleSendMessage = (address, text, attachment) => {
     socket.current.emit("send-message", {
       id: Date.now(),
       address: address,
       accessToken: state.accessToken,
       message: text,
+      attachment,
       to: "support",
       from: address,
-      timestamp: +new Date(),
     });
   };
 

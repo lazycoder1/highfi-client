@@ -1,6 +1,6 @@
 import React from "react";
 import { BsFillSquareFill } from "react-icons/bs";
-
+import ImageModal from "../../ui/image-modal";
 
 const Message = ({ msg }) => {
   console.log(msg)
@@ -36,7 +36,11 @@ const Message = ({ msg }) => {
           <span>{formattedTime}</span>
         </div>
         <div className="body">
-          <div className="text">{msg.message}</div>
+          <div className="text">
+            {
+              msg.message ? msg.message : <ImageModal src={msg.photoUrl}/>
+            }
+          </div>
         </div>
       </div>
     </div>
